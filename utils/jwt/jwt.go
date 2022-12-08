@@ -24,7 +24,7 @@ func VerifyToken(tokenString string) (*jwt.Token, error) {
 		if _, isValid := token.Method.(*jwt.SigningMethodHMAC); !isValid {
 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 		}
-		fmt.Println(token, "verify")
+		// fmt.Println(token, "verify")
 		return []byte(SecretKey), nil
 	})
 
@@ -36,11 +36,13 @@ func VerifyToken(tokenString string) (*jwt.Token, error) {
 
 func DecodeToken(tokenString string) (jwt.MapClaims, error) {
 	token, err := VerifyToken(tokenString)
+	// fmt.Println(token)
 	if err != nil {
 		return nil, err
 	}
 
 	claims, isOk := token.Claims.(jwt.MapClaims)
+	// fmt.Println(claims)
 	if isOk && token.Valid {
 		return claims, nil
 	}

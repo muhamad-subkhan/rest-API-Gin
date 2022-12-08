@@ -29,14 +29,5 @@ func Authorization() gin.HandlerFunc{
 			utils.HandleFailed(ctx, http.StatusUnauthorized, "failed to decode token")
 			return
 		}
-
-		// context := context.WithValue(ctx.Request.Context(), "token", claims)
-		// r:= ctx.Request.WithContext(context)
-		// r.Header.Set("Authorization", "Bearer "+token)
-
-		// ctxx := context.WithValue(ctx.Request.Context(), "userinfo", claims)
-		// r := ctx.Request.WithContext(ctxx)
-		// http.HandlerFunc.ServeHTTP(ctx.Writer, r.WithContext(ctxx))
-		
 	}
 }
